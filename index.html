@@ -2,25 +2,61 @@
 <html>
 <head>
   <title>Sistema de Alunos</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<div class="container">
+
   <h1>Cadastro de Alunos</h1>
+
+  <input type="hidden" id="id">
 
   <input type="text" id="nome" placeholder="Nome">
   <input type="email" id="email" placeholder="Email">
   <input type="number" id="idade" placeholder="Idade">
 
-  <button onclick="cadastrar()">Cadastrar</button>
+  <button class="btn-salvar" onclick="salvar()">Salvar</button>
+  <button class="btn-listar" onclick="abrirModal()">Ver Alunos</button>
 
-  <h2>Lista de Alunos</h2>
-  <ul id="lista"></ul>
+  <p id="mensagem"></p>
 
-  <h3 id="total"></h3>
- <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</div>
+
+<!-- MODAL -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+
+    <span class="fechar" onclick="fecharModal()">&times;</span>
+
+    <h2>Lista de Alunos</h2>
+
+    <input type="text" id="busca" placeholder="Buscar aluno..." onkeyup="filtrar()">
+
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Idade</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody id="lista"></tbody>
+    </table>
+
+    <h3 id="total"></h3>
+
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
   const { createClient } = supabase;
 </script>
 <script src="app.js"></script>
+
 </body>
 </html>

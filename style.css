@@ -120,3 +120,8 @@ tr:nth-child(even) {
   margin-top: 10px;
   font-weight: bold;
 }
+
+.btn-relatorio {
+  background: #9c27b0;
+  color: white;
+}

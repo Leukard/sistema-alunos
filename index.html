@@ -20,12 +20,13 @@
 
   <button class="btn-salvar" onclick="salvar()">Salvar</button>
   <button class="btn-listar" onclick="abrirModal()">Ver Alunos</button>
+  <button class="btn-relatorio" onclick="abrirRelatorio()">Ver Relatório</button>
 
   <p id="mensagem"></p>
 
 </div>
 
-<!-- MODAL -->
+<!-- MODAL LISTA -->
 <div id="modal" class="modal">
   <div class="modal-content">
 
@@ -48,6 +49,22 @@
     </table>
 
     <h3 id="total"></h3>
+
+  </div>
+</div>
+
+<!-- MODAL RELATÓRIO -->
+<div id="modalRelatorio" class="modal">
+  <div class="modal-content">
+
+    <span class="fechar" onclick="fecharRelatorio()">&times;</span>
+
+    <h2>Relatório de Alunos</h2>
+
+    <p id="relTotal"></p>
+    <p id="relMedia"></p>
+    <p id="relMaior"></p>
+    <p id="relMenor"></p>
 
   </div>
 </div>

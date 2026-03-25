@@ -46,6 +46,13 @@ button {
   font-weight: bold;
   margin-top: 10px;
   width: 100%;
+  transition: 0.2s;
+}
+
+/* efeito hover (mais profissional) */
+button:hover {
+  opacity: 0.9;
+  transform: scale(1.02);
 }
 
 .btn-salvar {
@@ -68,6 +75,11 @@ button {
   color: white;
 }
 
+.btn-relatorio {
+  background: #9c27b0;
+  color: white;
+}
+
 /* MODAL */
 .modal {
   display: none;
@@ -80,13 +92,26 @@ button {
   background-color: rgba(0,0,0,0.5);
 }
 
+/* animação leve */
 .modal-content {
   background: white;
   margin: 5% auto;
   padding: 20px;
   width: 80%;
-  max-width: 700px; /* evita ficar gigante */
+  max-width: 700px;
   border-radius: 10px;
+  animation: aparecer 0.3s ease;
+}
+
+@keyframes aparecer {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .fechar {
@@ -116,12 +141,29 @@ tr:nth-child(even) {
   background: #f2f2f2;
 }
 
+/* MENSAGEM */
 #mensagem {
   margin-top: 10px;
   font-weight: bold;
 }
 
-.btn-relatorio {
-  background: #9c27b0;
-  color: white;
+/* GRÁFICO */
+canvas {
+  margin-top: 20px;
+  max-height: 300px;
+}
+
+/* RESPONSIVO (fica bonito no celular) */
+@media (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  .modal-content {
+    width: 95%;
+  }
+
+  table, thead, tbody, th, td, tr {
+    font-size: 12px;
+  }
 }

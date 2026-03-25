@@ -3,6 +3,8 @@ const SUPABASE_KEY = "sb_publishable_gMqFSNZ-wINAPC9tZqxqzw_jO2jWqwz";
 
 const client = createClient(SUPABASE_URL, SUPABASE_KEY);
 
+let grafico = null;
+
 // SALVAR
 async function salvar() {
   const id = document.getElementById('id').value;
@@ -125,7 +127,7 @@ function mostrarMensagem(msg) {
   }, 3000);
 }
 
-// RELATÓRIO
+// RELATÓRIO COM GRÁFICO
 async function abrirRelatorio() {
   document.getElementById("modalRelatorio").style.display = "block";
 
@@ -140,7 +142,9 @@ async function abrirRelatorio() {
   }
 
   const total = data.length;
+  const nomes = data.map(a => a.nome);
   const idades = data.map(a => Number(a.idade));
+
   const soma = idades.reduce((acc, val) => acc + val, 0);
   const media = soma / total;
   const maior = Math.max(...idades);
@@ -150,6 +154,24 @@ async function abrirRelatorio() {
   document.getElementById('relMedia').innerText = "Média de idade: " + media.toFixed(1);
   document.getElementById('relMaior').innerText = "Maior idade: " + maior;
   document.getElementById('relMenor').innerText = "Menor idade: " + menor;
+
+  // destruir gráfico antigo
+  if (grafico) {
+    grafico.destroy();
+  }
+
+  const ctx = document.getElementById('graficoIdades').getContext('2d');
+
+  grafico = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: nomes,
+      datasets: [{
+        label: 'Idade dos alunos',
+        data: idades
+      }]
+    }
+  });
 }
 
 function fecharRelatorio() {
